@@ -17,6 +17,8 @@ public class ScoreUserDB {
 //        int second_score;
 //        boolean second_clear;
 
+        //임시 데이터
+        //추후 입력값 받아 저장
         String name = "손제티";
         int first_score = 22222;
         int first_clear = 1;
