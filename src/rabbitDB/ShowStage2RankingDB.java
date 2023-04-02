@@ -2,6 +2,7 @@ package rabbitDB;
 
 import java.sql.*;
 
+//스테이지2 점수 출력
 //ranking 출력
 //1~5위까지
 public class ShowStage2RankingDB {
@@ -19,9 +20,6 @@ public class ShowStage2RankingDB {
             System.out.println( rank + "등\t" +
                     rs.getString("name") + "\t" +
                     rs.getInt("second_score") + "\t"
-//                    rs.getInt("first_clear") + "\t" +
-//                    rs.getInt("second_score") + "\t" +
-//                    rs.getInt("second_clear")
                     );
             rank++;
         }
