@@ -18,18 +18,22 @@ public class DBHelper {
             String createSql = "CREATE DATABASE IF NOT EXISTS `rabbitScoreDB`";  // DB가 없다면 DB를 만들어라
 
             stmt.executeUpdate(createSql);
-            url="jdbc:mysql://localhost/AdaventureOfWhaleDB?serverTimezone=UTC";
-            connection = DriverManager.getConnection(url, userName, password);
+            url="jdbc:mysql://localhost/rabbitScoreDB?serverTimezone=UTC";
+            connection = DriverManager.getConnection(url, userName,password);
             stmt = connection.createStatement();
             createSql = "CREATE TABLE IF NOT EXISTS rabbit_table(name varchar(20)," +
-                    " first_score int, first_clear  tinyint(1))" +
+                    " first_score int, first_clear  tinyint(1)," +
                     "second_score int, second_clear tinyint(1)";  //tableㅇㅣ 없다면 table를 만들어라
-
             stmt.executeUpdate(createSql);
             stmt.close();
             connection.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.print(e);
         }
+    }
+    public static void main(String[] args) throws SQLException {
+        new DBHelper();
+
+
     }
 }
