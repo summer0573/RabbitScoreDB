@@ -1,12 +1,10 @@
 package rabbitDB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class DBHelper {
-    public DBHelper() {
+//데이터 베이스와 로그인 정보 저장 테이블이 없을시 생성하는 코드
+public class UserDBHelper {
+    public UserDBHelper() {
         String url = "jdbc:mysql://127.0.0.1/?useSSL=false&user=root&password=@summer0573";
         String userName = "root";
         String password = "@summer0573";
@@ -18,10 +16,10 @@ public class DBHelper {
             String createSql = "CREATE DATABASE IF NOT EXISTS `rabbitScoreDB`;";  // DB가 없다면 DB를 만들어라
 
             stmt.executeUpdate(createSql);
-            url="jdbc:mysql://localhost/rabbitScoreDB?serverTimezone=UTC";
-            connection = DriverManager.getConnection(url, userName,password);
+            url = "jdbc:mysql://localhost/rabbitScoreDB?serverTimezone=UTC";
+            connection = DriverManager.getConnection(url, userName, password);
             stmt = connection.createStatement();
-            createSql = "CREATE TABLE IF NOT EXISTS rabbit_table(name varchar(20), first_score int, first_clear  tinyint(1), second_score int, second_clear tinyint(1));";
+            createSql = "CREATE TABLE IF NOT EXISTS User_table(name varchar(20), userPassword varchar(50));";
             //^tableㅇㅣ 없다면 table를 만들어라
             stmt.executeUpdate(createSql);
             stmt.close();
@@ -31,8 +29,9 @@ public class DBHelper {
             System.out.print("생성 실패");
         }
     }
+
     public static void main(String[] args) throws SQLException {
-        new DBHelper();
+        new UserDBHelper();
 
 
     }
